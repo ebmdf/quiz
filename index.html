@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Quiz Interativo</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Quiz Interativo">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Quiz Interativo">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlF1aXogSW50ZXJhdGl2byIsCiAgInNob3J0X25hbWUiOiAiUXVpeiIsCiAgImRlc2NyaXB0aW9uIjogIlRlc3RlIHNldXMgY29uaGVjaW1lbnRvcyBlbSBkaXZlcnNvcyB0ZW1hcyEiLAogICJzdGFydF91cmwiOiAiLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzYzNjZmMSIsCiAgInRoZW1lX2NvbG9yIjogIiM2MzY2ZjEiLAogICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdC1wcmltYXJ5IiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCM2FXUjBhRDBpTVRJNElpQm9aV2xuYUhROUlqRXlPQ0lnZG1sbGQwSnZlRDBpTUNBd0lERXlPQ0F4TWpnaUlIaHRiRzV6UFNKb2RIUndPaTh2ZDNkM0xuY3pMbTl5Wnk4eU1EQXdMM04yWnlJK1BISmxZM1FnZUQwaU1UQWlJSGs5SWpFd0lpQjNhV1IwYUQwaU1UQTRJaUJvWldsbmFIUTlJakV3T0NJZ2NuZzlJalFpSUdacGJHdzlJaU0yTXpZMlpqRWlMejQ4Y0dGMGFDQmtQU0J0TmpRZ01qUm9NVFl3ZGpZMGFDMHhOakIyTFRZMGVpSWdabWxzYkQwaUkzZG1abVptWmlJdlBqeDBaWGgwSUhnOUlqWTBJaUI1UFNJMk5DSWdabWxzYkQwaUl6WXpOalptTVNJZ1ptOXVkQzFtWVcxcGJIazlJbUZ5YVdGc0xDQnpZVzV6TFhObGNtbG1JaUJtYjI1MExYTnBlbVU5SWpJNElpQjBaWGgwTFdGdVkyaHZjajBpYldsa1pHeGxJajVSUEM5MFpYaDBQand2YzNablBnPT0iLAogICAgICAic2l6ZXMiOiAiMTI4eDEyOCIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9LAogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU5URXlJaUJvWldsbmFIUTlJalV4TWlJZ2RtbGxkMEp2ZUQwaU1DQXdJRFV4TWlBMU1USWlJSGh0Ykc1elBTSm9kSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SStQSEpsWTNRZ2VEMGlNVEFpSUhrOUlqRXdJaUIzYVdSMGFEMGlORGt5SWlCb1pXbG5hSFE5SWpRNU1pSWdjbmc5SWpRaUlHWnBiR3c5SWlNMk16WTJaakVpTHo0OGNHRjBhQ0JrUFNKdE1qVTJJREV4TW1neE5UWjJNVFU0YUMweE5UWjJMVEUxT0hvaUlHWnBiR3c5SWlOM1ptWm1abVlpTHo0OGRHVjRkQ0I0UFNJeU5UWWlJSGs5SWpJMU5pSWdabWxzYkQwaUl6WXpOalptTVNJZ1ptOXVkQzFtWVcxcGJIazlJbUZ5YVdGc0xDQnpZVzV6TFhObGNtbG1JaUJtYjI1MExYTnBlbVU5SWpVeUlpQjBaWGgwTFdGdVkyaHZjajBpYldsa1pHeGxJajVSUEM5MFpYaDBQand2YzNablBnPT0iLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeD0iMTAiIHk9IjEwIiB3aWR0aD0iMTA4IiBoZWlnaHQ9IjEwOCIgcng9IjQiIGZpbGw9IiM2MzY2ZjEiLz48cGF0aCBkPSJtNjQgMjRoMTYwdjY0aC0xNjB2LTY0eiIgZmlsbD0iI3dmZmZmZiIvPjx0ZXh0IHg9IjY0IiB5PSI2NCIgZmlsbD0iIzYzNjZmMSIgZm9udC1mYW1pbHk9ImFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5RPC90ZXh0Pjwvc3ZnPg==">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSIyIiBmaWxsPSIjNjM2NmYxIi8+PHRleHQgeD0iMTYiIHk9IjIwIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9ImFyaWFsIiBmb250LXNpemU9IjE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5RPC90ZXh0Pjwvc3ZnPg==">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        html {
+            color-scheme: light;
+            font-size: 16px;
+        }
+        
+        @media (max-width: 640px) {
+            html {
+                font-size: 14px;
+            }
+        }
+
+        html.dark {
+            color-scheme: dark;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            min-height: 100vh;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        html.dark body {
+            background: #111827;
+            background-image: linear-gradient(135deg, #111827, #1f2937);
+        }
+        
+        html.dark {
+            --text-color: #f3f4f6 !important;
+            --secondary-text-color: #9ca3af !important;
+            --card-background-color: rgba(31, 41, 55, 0.95) !important;
+        }
+
+        html.dark input:not([type="checkbox"]):not([type="radio"]), 
+        html.dark select, 
+        html.dark textarea {
+            background-color: #374151 !important;
+            border-color: #4b5563 !important;
+            color: #ffffff !important;
+        }
+
+        html.dark input::placeholder,
+        html.dark textarea::placeholder {
+            color: #9ca3af !important;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        textarea,
+        select {
+            border-radius: 0.375rem !important;
+            border: 1px solid #cce7ff !important;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            font-size: 1rem;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="url"]:focus,
+        input[type="tel"]:focus,
+        input[type="number"]:focus,
+        input[type="date"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #4f46e5 !important;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2) !important;
+            outline: none;
+        }
+        
+        .theme-card {
+            transition: all 0.3s ease;
+        }
+        
+        .theme-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .difficulty-btn {
+            transition: all 0.3s ease;
+            opacity: 0.9;
+        }
+        
+        .difficulty-btn:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+        
+        .option-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .option-btn:hover {
+            transform: scale(1.02);
+        }
+        
+        .correct {
+            background-color: #10b981 !important;
+            color: white !important;
+            border-color: #059669 !important;
+        }
+        
+        .incorrect {
+            background-color: #ef4444 !important;
+            color: white !important;
+            border-color: #dc2626 !important;
+        }
+        
+        .quiz-container {
+            max-width: 800px;
+            width: 95%;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            transition: width 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .floating-label {
+            position: absolute;
+            left: 16px;
+            top: 12px;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            background-color: #f9fafb;
+            padding: 0 4px;
+        }
+        
+        html.dark .floating-label {
+            background-color: #374151;
+            color: #ffffff;
+        }
+        
+        .input-field:focus ~ .floating-label,
+        .input-field:not(:placeholder-shown) ~ .floating-label {
+            transform: translateY(-24px) scale(0.85);
+            color: #4f46e5;
+            font-weight: 500;
+        }
+
+        html.dark .input-field:focus ~ .floating-label,
+        html.dark .input-field:not(:placeholder-shown) ~ .floating-label {
+            color: #ffffff !important;
+        }
+        
+        .input-field:focus {
+            border-color: #4f46e5;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            border-radius: 50%;
+            animation: fall 3s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        
+        @keyframes zoom-in {
+            from { opacity: 0; transform: scale(0.8) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-zoom-in { animation: zoom-in 0.4s ease-out forwards; }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        }
+        
+        html.dark .glass-card {
+            background: rgba(31, 41, 55, 0.95);
+            border-color: rgba(75, 85, 99, 0.4);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .progress-animation {
+            animation: progressGrow 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: left;
+        }
+        
+        @keyframes progressGrow {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        
+        @keyframes countdown-circle {
+            from {
+                stroke-dashoffset: 113.1;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .standalone-mode {
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: calc(env(safe-area-inset-bottom) + 80px);
+        }
+
+        .install-prompt {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .theme-card, .difficulty-btn, .option-btn, button {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        .admin-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .admin-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90vw;
+            height: 90vh;
+            max-width: 1200px;
+            z-index: 101;
+            animation: slideInUp 0.4s ease-out;
+        }
+        
+        .admin-cog-button {
+            background-color: var(--admin-btn-bg-color);
+            color: var(--admin-btn-icon-color);
+            opacity: var(--admin-btn-opacity);
+            padding: 0.5rem;
+            border-radius: 9999px;
+            backdrop-filter: blur(4px);
+            transition: all 0.2s ease-in-out;
+        }
+        .admin-cog-button:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-seek {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            cursor: pointer;
+            background: transparent;
+            height: 12px;
+        }
+        .progress-seek:focus {
+            outline: none;
+        }
+        .progress-seek::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            background: linear-gradient(to right, 
+                var(--progress-color, #6366f1) 0%, 
+                var(--progress-color, #6366f1) var(--progress-percent, 0%), 
+                rgba(255, 255, 255, 0.3) var(--progress-percent, 0%), 
+                rgba(255, 255, 255, 0.3) 100%
+            );
+        }
+        .progress-seek::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 12px;
+            width: 12px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: none;
+            margin-top: -4px;
+            transition: transform 0.2s ease;
+        }
+        .progress-seek:hover::-webkit-slider-thumb {
+            transform: scale(1.2);
+        }
+        .progress-seek::-moz-range-track {
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .progress-seek::-moz-range-progress {
+            height: 4px;
+            border-radius: 2px;
+            background-color: var(--progress-color, #6366f1);
+        }
+        .progress-seek::-moz-range-thumb {
+            height: 12px;
+            width: 12px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: none;
+            transition: transform 0.2s ease;
+        }
+        .progress-seek:hover::-moz-range-thumb {
+            transform: scale(1.2);
+        }
+
+        @keyframes carousel-fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-carousel-fade { animation: carousel-fade-in 0.7s ease-in-out; }
+        
+        @keyframes carousel-zoom-in {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-carousel-zoom { animation: carousel-zoom-in 0.7s ease-in-out; }
+        
+        @keyframes carousel-slide-in-from-right {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        .animate-carousel-slide-from-right { animation: carousel-slide-in-from-right 0.5s ease-in-out; }
+
+        @keyframes carousel-slide-in-from-left {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        .animate-carousel-slide-from-left { animation: carousel-slide-in-from-left 0.5s ease-in-out; }
+        
+        .printable-content {
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 210mm;
+        }
+
+        .word-grid {
+            display: grid;
+            container-type: size;
+            gap: clamp(1px, 0.5cqmin, 4px);
+            background-color: #a8a29e;
+            border: 2px solid #a8a29e;
+            border-radius: 8px;
+            padding: 2px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+        
+        html.dark .word-grid {
+            background-color: #57534e;
+            border-color: #57534e;
+        }
+
+        .grid-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: none;
+            transition: all 0.1s;
+            font-size: clamp(10px, calc(100cqmin / var(--grid-size, 10) * 0.65), 2.5rem);
+            background-color: #e7e5e4;
+            color: #44403c;
+            border-radius: 15%;
+            line-height: 1;
+        }
+        
+        html.dark .grid-cell {
+            background-color: #292524;
+            color: #e7e5e4;
+        }
+
+        .grid-cell:hover {
+            transform: scale(1.1);
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .grid-cell.selected {
+            background-color: #facc15 !important;
+            color: #1c1917;
+            transform: scale(1.05);
+        }
+        .grid-cell.found {
+            color: white;
+        }
+        
+        @keyframes pulse-word-found {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        .grid-cell.pulse-animation {
+            animation: pulse-word-found 0.4s ease-in-out;
+            z-index: 20;
+        }
+        
+        .word-item {
+            transition: color 0.3s, opacity 0.3s, transform 0.2s;
+            color: #ffffff;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+            font-size: clamp(0.6rem, 2vmin, 1rem);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 600;
+        }
+        html.dark .word-item {
+            color: #ffffff;
+        }
+
+        .word-item.found {
+            color: #78716c;
+            opacity: 0.6;
+            text-decoration: line-through;
+            text-decoration-color: #ef4444;
+            text-decoration-thickness: 2px;
+            transform: scale(0.95);
+        }
+        
+        .ws-theme-btn {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .ws-theme-btn.selected {
+            box-shadow: 0 0 0 4px #facc15;
+            transform: scale(1.05);
+        }
+        .ws-theme-btn:hover {
+            transform: scale(1.02);
+        }
+        .ws-theme-btn.selected:hover {
+            transform: scale(1.05);
+        }
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+            40%, 43% { transform: translate3d(0,-8px,0); }
+            70% { transform: translate3d(0,-4px,0); }
+            90% { transform: translate3d(0,-2px,0); }
+        }
+        .bounce-animation {
+            animation: bounce 1s ease-in-out;
+        }
+
+        @media (max-width: 640px) {
+            .quiz-container {
+                width: 100%;
+                margin: 0;
+                border-radius: 0;
+                min-height: 100dvh; 
+                box-shadow: none !important;
+                border: none !important;
+            }
+            .glass-card {
+                border-radius: 0;
+                border: none;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root">
+        <!-- Initial Loading Spinner -->
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-family: sans-serif; flex-direction: column;">
+            <svg style="animation: spin 1s linear infinite; height: 2.5rem; width: 2.5rem; margin-bottom: 1rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle style="opacity: 0.25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path style="opacity: 0.75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <h2 style="font-size: 1.5rem; font-weight: bold;">Carregando Quiz...</h2>
+            <style>
+                @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+            </style>
+        </div>
+    </div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

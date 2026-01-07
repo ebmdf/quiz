@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Redireciona todas as requisições desta pasta para o servidor Node.js local
+    # Certifique-se de que a porta 3001 corresponde à porta no seu server.js ou .env
+    RewriteRule ^(.*)$ http://127.0.0.1:3001/api/$1 [P,L]
+    RewriteRule ^$ http://127.0.0.1:3001/api/ [P,L]
+</IfModule>
